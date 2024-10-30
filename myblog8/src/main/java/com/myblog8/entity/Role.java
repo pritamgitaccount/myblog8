@@ -20,5 +20,5 @@ public class Role {
     @ManyToMany(mappedBy = "roles")//here ManyToMany is actually don't require here, it has automatically done here
     private Set<User> users = new HashSet<>();
 
-    // Getters, setters, and other methods omitted for brevity
+
 }

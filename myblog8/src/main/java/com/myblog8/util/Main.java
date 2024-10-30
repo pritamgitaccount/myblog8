@@ -8,4 +8,13 @@ public class Main {
         System.out.println(Sort.Direction.DESC.name());
 
     }
+
+    public int test2(){
+        Main m1=new Main();
+       return m1.test3();
+    }
+
+    public int test3(){
+     return 300;
+    }
 }

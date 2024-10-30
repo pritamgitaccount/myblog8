@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/posts")
 public class PostController {
-    private PostService postService;
+    private final PostService postService;
 
     public PostController(PostService postService) {
         this.postService = postService;
@@ -46,7 +46,7 @@ public class PostController {
     @GetMapping("{postId}")
     public ResponseEntity<PostDto> getPostByPostId(@PathVariable int postId) {
         //  PostDto dto = postService.getPostByPostId(postId);
-        return new ResponseEntity<>(this.postService.getPostByPostId(postId), HttpStatus.OK);
+        return new ResponseEntity<>(postService.getPostByPostId(postId), HttpStatus.OK);
     }
 
     //http://localhost:8080/api/posts?pageNo=0&pageSize=3&sortBy=content&sortDir=desc
@@ -57,7 +57,7 @@ public class PostController {
             @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
             @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir
     ) {
-        PostResponse postResponse = postService.getAllPosts(pageNo, pageSize, sortBy, sortDir);
-        return postResponse;
+        return postService.getAllPosts(pageNo, pageSize, sortBy, sortDir);
+
     }
 }
